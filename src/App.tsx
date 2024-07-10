@@ -11,6 +11,7 @@ import Row from 'react-bootstrap/Row';
 import male1 from './male1.jpg';
 // import male2 from './male2.jpg';
 import Vagelis_photo from './Vagelis_Photo.webp';
+import Vasilis_photo from './Vasilis_photo.png';
 import Sevi_photo from './myphoto.jpg';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
@@ -70,7 +71,7 @@ function Homepage() {
         awareness about the essential link between education and economic health.
         </p>
       </div>
-      <div className='Carousel_div'>
+      {/* <div className='Carousel_div'>
         <h2> Vizualizations overview </h2>
         <br></br>
         <Carousel>
@@ -91,7 +92,7 @@ function Homepage() {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-      </div>
+      </div> */}
     </body>
 
   );
@@ -111,9 +112,17 @@ function AboutUs() {
         <Col xs={6} md={4}>
           <br></br>
           <br></br>
-          <Image src={male1} thumbnail />
+          <Image className='Vasilis_photo' src={Vasilis_photo} thumbnail />
           <figcaption >
           Vasilis Malafekas
+          </figcaption>
+        </Col>
+        <Col xs={6} md={4}>
+          <br></br>
+          <br></br>
+          <Image src={Vagelis_photo} thumbnail />
+          <figcaption>
+          Vaggelis Kostoulas
           </figcaption>
         </Col>
         <Col xs={6} md={4}>
@@ -122,14 +131,6 @@ function AboutUs() {
           <Image src={Sevi_photo} thumbnail />
           <figcaption>
           Sevi Papaioannou
-          </figcaption>
-        </Col>
-        <Col xs={6} md={4}>
-          <br></br>
-          <br></br>
-          <Image src={Vagelis_photo} thumbnail />
-          <figcaption>
-          Evangelos Kostoulas
           </figcaption>
         </Col>
         </Row>
@@ -143,30 +144,116 @@ function Visualizations() {
 
   return(
     <body className='visualizations_body'>
-      <h1>Visualization</h1>
-      {/* {WorldMap()} */}
+      <h1>Is Education Spending Associated with Better Outcomes?</h1>
+
       {FinalChart1()}
       {/* {FinalChart2()} */}
       <br></br>
       <br></br>
+      <p>This visualization examines the relationship between average PISA performance 
+        and education expenditure per person across various countries. Although there is 
+        a noticeable trend where higher spending tends to be linked with better performance, 
+        the relationship is far from linear. Numerous factors, such as the efficiency of expenditure, 
+        socioeconomic conditions, and education policies, play a significant role in influencing 
+        performance outcomes. This chart prompts a closer analysis of how different countries 
+        allocate their educational resources and the subsequent impact on student performance.</p>
       <br></br>
       <br></br>
       <br></br>
       <br></br>
-      <h1>Visualization</h1>
+      <br></br>
+      <br></br>
+      {/* <h1>Visualization</h1> */}
       {DoubleChart()}
+    
       <br></br>
       <br></br>
       <br></br>
+      <p>The interactive education expenditure dashboard of OECD countries consists of
+         an interactive map and a line chart. It provides a view of expenditures by country 
+         and year, allowing the user to monitor changes in education spending over the years 
+         and intervene where deemed useful. The first chart of the dashboard is an interactive 
+         globe map with functionalities for selecting a country, focusing, and rotating. 
+         The data is visualized on the countries based on their expenditure values according to 
+         the legend at the bottom of the map, aiming for quick data reading. There is also the option 
+         for more precise reading of countries' expenditures by hovering the mouse cursor over the 
+         countries. Additionally, selecting a country brings it to the center and colors it yellow, 
+         activating the label with its expenditure value. The second chart is a line graph that 
+         visualizes the evolution of education funding since 2000. The goal is to provide a view 
+         of the trends in countries' education expenditures over time. The user has the option to 
+         select a country from the dropdown menu, also providing the option to see all countries 
+         together for comparison. Selecting an individual country displays the line with its 
+         expenditure values over time. The lines and peaks of the chart are interactive and can 
+         be selected directly from the graph without using the menu. The peaks also provide 
+         information with labels when hovering the cursor over them. The map and the line chart 
+         function complementarily, as there is both an immediate color-based reading of the map 
+         and a detailed annual presentation of education funding in the chart. The integration of 
+         the two visualizations provides easy comparison and analysis of trends and data.</p>
       <br></br>
       <br></br>
       <br></br>
+
+      <h1>Understanding Educational Outcomes and Expenditures
+      </h1>
+      {DashboardOne()}
+      <br></br>
+      <p>This dashboard presents three distinct visualizations that offer a comprehensive overview 
+        of educational performance and expenditures across various countries, providing insights 
+        into the complex relationships between funding, resources, and student outcomes:
+      </p>
+      <br></br>
+      <p>
+        PISA General Results: This bar chart displays the average PISA performance per year, 
+        sorted by country. It highlights the significant variations in educational outcomes and 
+        expenditure per person, demonstrating that higher spending does not always correlate with 
+        higher performance. This suggests that factors beyond expenditure, such as educational 
+        policies, teaching quality, and socio-economic conditions, play critical roles in influencing 
+        student performance.
+      </p>
+      <br></br>
+      <p>
+        School Ownership Distribution: The donut chart illustrates the distribution of school 
+        ownership types (Public, Private, and Private-Government dependent) for a selected country 
+        and year. This helps in understanding the diversity of educational systems and how different 
+        ownership models contribute to the overall educational landscape. By comparing the proportions 
+        of different school types, one can infer potential impacts on accessibility, quality, and 
+        outcomes of education.
+      </p>
+      <br></br>
+      <p>
+        Education Extras: The radar chart depicts various general education metrics, including 
+        'Creative extra-curricular activities', 'Available computers per student', 
+        'Proportion of all teachers fully certified', 'Student-Teacher ratio', 'School Size', and 
+        'Class Size'. These metrics provide a detailed view of the educational environment and 
+        resources available to students. Analyzing these factors helps to identify strengths and 
+        weaknesses within the educational system, offering insights into areas that may require 
+        additional investment or policy adjustments to improve overall educational quality and equity.
+      </p>
       <br></br>
       <br></br>
       <br></br>
+      <h1>Analyzing Educational Performance and Factors Affecting It</h1>
+      {DashboardTwo()}
       <br></br>
-      <h1>Charts</h1>
-      {TestChart()}
+      <p>
+        This dashboard presents two key visualizations to provide insights into educational 
+        performance over time and the factors that impact it:
+      </p>
+      <p>
+        PISA Scores Over the Years: This chart displays the normalized PISA scores in Math, 
+        Reading, and Science for a selected country over various years. It also compares these 
+        scores with the global average, highlighting the performance trends and identifying periods 
+        of improvement or decline. By observing these trends, we can better understand the effectiveness 
+        of educational policies and identify areas that need attention.
+      </p>
+      <p>
+        Impact of Behaviors and Shortages: This chart shows the positive or negative impact 
+        of different factors on education, including 'Student behavior', 'Teacher behavior', 
+        'Staff Shortage', and 'Material Shortage'. The visualization helps in understanding 
+        how these factors influence educational outcomes and can guide targeted interventions 
+        to address specific issues. Recognizing these impacts allows for more focused efforts in 
+        improving educational environments and resources.
+      </p>
       <br></br>
       <br></br>
       <br></br>
@@ -178,8 +265,33 @@ function Visualizations() {
 function Acknowledgements() {
 
   return(
-    <body>
-      
+    <body className='credits_body'>
+      <h2 className='credits_h2'>Special thanks to the following resources</h2>
+      <br></br>
+      <br></br>
+      <br></br>
+      <h4>
+        Website:
+      </h4>
+      <p className='credits_p'>
+        React: https://react.dev/
+      </p>
+      <p className='credits_p'>
+        React Bootstrap: https://react-bootstrap.netlify.app/
+      </p>
+      <p className='credits_p'>
+        d3: https://d3js.org/
+      </p>
+
+      <br></br>
+      <br></br>
+      <h4>Datasets:</h4>
+      <p className='credits_p'>
+        Pisa: https://pisadataexplorer.oecd.org/ide/idepisa/
+      </p>
+      <p className='credits_p'>
+        OECD: https://www.oecd.org/en/data.html
+      </p>
     </body>
   )
 }
@@ -292,13 +404,13 @@ const DoubleChartDataLoader = () => {
           .node()
           .getBoundingClientRect().height;
   
-        const legendContainer = d3.select("#legend");
-        const legendContainerWidth = legendContainer
+        //const legendContainer = d3.select("#left");
+        const legendContainerWidth = mapContainer
           .node()
           .getBoundingClientRect().width;
-        const legendContainerHeight = legendContainer
-          .node()
-          .getBoundingClientRect().height;
+        //const legendContainerHeight = legendContainer
+        //.node()
+        //.getBoundingClientRect().height;
   
         // Define line chart constants and dimensions
         const margin = { top: 20, right: 60, bottom: 60, left: 50 };
@@ -1099,7 +1211,7 @@ const DoubleChartDataLoader = () => {
         svgLineChart
           .append("text")
           .attr("class", "y axis-label")
-          .attr("x", -chartHeight)
+          .attr("x", -chartHeight - 45)
           .attr("y", -margin.left + 15)
           //.attr("text-anchor", "middle")
           .attr("transform", "rotate(-90)")
@@ -1137,28 +1249,32 @@ const DoubleChartDataLoader = () => {
 
 const DoubleChart = () => {
   return (
-    <div class="container">
-      <div className="left">
-        <h2>Education Expenditure Globe</h2>
-        <div id="map"></div>
-        <div id="legend_double_chart"><label for="legend_double_chart" id="legend-label">Education Expenditure per Person (US $)</label></div>
-        <div id="title"><h3>Education Expenditure in OECD Countries per Year</h3></div>
-      </div>
-      <div className="right">
-        <h2>Global Education Expenditure Line Chart</h2>
-        <div id="chart"></div>
-        <div id="select-country-container">
-          <label for="select-country"  id="select-country-label">Select Country:</label>
-          <select id="select-country"></select>
-        </div>
-        <div id="select-year-container">
-          <label for="select-year" id="select-year-label">Select Year:</label>
-          <select id="select-year"></select>
-          <button id="play-stop-button">Play / Stop</button>
-        </div>
-      </div>
-        {DoubleChartDataLoader()}
+    <div className="container">
+    <div className="left">
+      <div id="map"></div>
+      <div id="legend"><label for="legend" id="legend-label">Education Expenditure per Person (US $)</label></div>
+      <div id="title"><h3>Education Expenditure Interactive Dashboard (OECD Counties)</h3></div>
+    
     </div>
+    <div className="right">
+      <div id="chart"></div>
+      <div id="select-country-container">
+        <label for="select-country"  id="select-country-label">Select Country:</label>
+        <select id="select-country"></select>
+      </div>
+      <div id="select-year-container">
+        <label for="select-year" id="select-year-label">Select Year:</label>
+        <select id="select-year"></select>
+        <button id="play-stop-button">Play / Stop</button>
+      </div>
+
+    </div>
+
+    {DoubleChartDataLoader()}
+
+  
+
+  </div>
   )
 }
 
@@ -1170,241 +1286,515 @@ const DoubleChart = () => {
 
 
 
+// const FinalChart1DataLoader = () => {
+//   useEffect(() => { 
+//     const margin = {top: 40, right: 130, bottom: 60, left: 70},
+//               width = 960 - margin.left - margin.right,
+//               height = 600 - margin.top - margin.bottom;
+
+//         const svg = d3.select("svg")
+//                       .attr("width", width + margin.left + margin.right)
+//                       .attr("height", height + margin.top + margin.bottom)
+//                       .append("g")
+//                       .attr("transform", `translate(${margin.left},${margin.top})`);
+
+//         const tooltip = d3.select("#tooltip");
+
+//         let dataGlobal;
+
+//         // Load data
+//         d3.csv("Pisa_Economy_Final.csv").then(data => {
+//             // Parse data
+//             data.forEach(d => {
+//                 d['Year'] = +d['Year'];
+//                 d['Country'] = d['Country'];
+//                 d['Country Name'] = d['Country Name'];
+//                 d['Continent'] = d['Continent']; // Assuming Continent is the field name
+//                 d.Performance = +d['Average Performance'];
+//                 d.Expenditure = +d['EDU Exp. Per Person Absolute'];
+//                 d.Population = +d['Population'];
+//             });
+
+//             dataGlobal = data;
+
+//             // Populate the dropdown with unique years, sorted from largest to smallest
+//             const years = [...new Set(data.map(d => d.Year))].sort((a, b) => b - a);
+//             const select = d3.select("#year-select");
+//             select.selectAll("option")
+//                   .data(years)
+//                   .enter()
+//                   .append("option")
+//                   .attr("value", d => d)
+//                   .text(d => d);
+
+//             // Initial display
+//             update(data.filter(d => d.Year === years[0]));
+
+//             // Event listener for dropdown
+//             select.on("change", function() {
+//                 const selectedYear = +this.value;
+//                 update(data.filter(d => d.Year === selectedYear));
+//             });
+//         });
+
+//         function update(filteredData) {
+//             // Normalize data
+//             const maxExpenditure = d3.max(filteredData, d => d.Expenditure);
+//             const maxPerformance = d3.max(filteredData, d => d.Performance);
+
+//             filteredData.forEach(d => {
+//                 d.normalizedExpenditure = d.Expenditure / maxExpenditure;
+//                 d.normalizedPerformance = d.Performance / maxPerformance;
+//             });
+
+//             // Clear previous elements
+//             svg.selectAll("*").remove();
+
+//             // Set scales
+//             const x = d3.scaleLinear()
+//                         .domain([-0.05, 1.05]) // Adding padding to ensure bubbles are inside
+//                         .range([0, width]);
+
+//             const y = d3.scaleLinear()
+//                         .domain([-0.05, 1.05]) // Adding padding to ensure bubbles are inside
+//                         .range([height, 0]);
+
+//             const z = d3.scaleSqrt()
+//                         .domain([0, d3.max(filteredData, d => d.Population)])
+//                         .range([2, 30]);
+
+//             // Define a color scale for continents
+//             const continentColors = d3.scaleOrdinal(d3.schemeSet2);
+
+//             // Define a color scale for countries within continents
+//             const countryColors = {};
+//             d3.groups(filteredData, d => d.Continent).forEach(group => {
+//                 countryColors[group[0]] = d3.scaleLinear()
+//                                             .domain([0, group[1].length - 1])
+//                                             .range([continentColors(group[0]), d3.color(continentColors(group[0])).darker(1)])
+//                                             .interpolate(d3.interpolateLab);
+//             });
+
+//             const countryColorMap = {};
+//             d3.groups(filteredData, d => d.Continent).forEach(group => {
+//                 group[1].forEach((d, i) => {
+//                     countryColorMap[d.Country] = countryColors[d.Continent](i / (group[1].length - 1));
+//                 });
+//             });
+
+//             // Add X axis
+//             svg.append("g")
+//                .attr("transform", `translate(0,${height})`)
+//                .call(d3.axisBottom(x))
+//                .append("text")
+//                .attr("class", "axis-title")
+//                .attr("x", width / 2)
+//                .attr("y", margin.bottom - 10)
+//                .attr("fill", "black")
+//                .style("text-anchor", "middle")
+//                .text("Normalized Expenditure");
+
+//             // Add Y axis
+//             svg.append("g")
+//                .call(d3.axisLeft(y))
+//                .append("text")
+//                .attr("class", "axis-title")
+//                .attr("transform", "rotate(-90)")
+//                .attr("x", -height / 2)
+//                .attr("y", -margin.left + 20)
+//                .attr("fill", "black")
+//                .style("text-anchor", "middle")
+//                .text("Normalized Performance");
+
+//             // Add X grid lines
+//             svg.append("g")
+//                .attr("class", "grid")
+//                .attr("transform", `translate(0,${height})`)
+//                .call(d3.axisBottom(x)
+//                        .tickSize(-height)
+//                        .tickFormat(""));
+
+//             // Add Y grid lines
+//             svg.append("g")
+//                .attr("class", "grid")
+//                .call(d3.axisLeft(y)
+//                        .tickSize(-width)
+//                        .tickFormat(""));
+
+//             // Group data by continent
+//             const continents = d3.group(filteredData, d => d.Continent);
+
+//             // Add dots
+//             const groups = svg.selectAll(".continent-group")
+//                               .data(continents)
+//                               .enter()
+//                               .append("g")
+//                               .attr("class", "continent-group")
+//                               .attr("id", d => `group-${d[0].replace(/\s/g, '')}`);
+
+//             groups.selectAll("circle")
+//                   .data(d => d[1])
+//                   .enter()
+//                   .append("circle")
+//                   .attr("cx", d => x(d.normalizedExpenditure))
+//                   .attr("cy", d => y(d.normalizedPerformance))
+//                   .attr("r", d => z(d.Population))
+//                   .attr("fill", d => countryColorMap[d.Country])
+//                   .attr("stroke", "black")
+//                   .attr("stroke-width", 1)
+//                   .attr("opacity", 0.7)
+//                   .on("mouseenter", (event, d) => {
+//                         tooltip.transition()
+//                                .duration(200)
+//                                .style("opacity", .9);
+//                         tooltip.html(`Country: ${d['Country Name']}<br>Expenditure: ${d.Expenditure}<br>Performance: ${d.Performance}<br>Population: ${d.Population}`)
+//                                .style("left", (event.pageX + 5) + "px")
+//                                .style("top", (event.pageY - 28) + "px");
+
+//                         d3.selectAll(".continent-group").attr("opacity", 0.1);
+//                         d3.select(`#group-${d.Continent.replace(/\s/g, '')}`).attr("opacity", 1);
+//                   })
+//                   .on("mouseleave", d => {
+//                         tooltip.transition()
+//                                .duration(500)
+//                                .style("opacity", 0);
+
+//                         d3.selectAll(".continent-group").attr("opacity", 1);
+//                   });
+
+//             // Add labels
+//             groups.selectAll("text")
+//                   .data(d => d[1])
+//                   .enter()
+//                   .append("text")
+//                   .attr("x", d => x(d.normalizedExpenditure))
+//                   .attr("y", d => y(d.normalizedPerformance))
+//                   .attr("dy", -4)
+//                   .attr("text-anchor", "middle")
+//                   .text(d => d.Country)
+//                   .attr("class", "label")
+//                   .style("fill", d => countryColorMap[d.Country]);
+
+//             // Add legend for continents
+//             const legend = svg.append("g")
+//                               .attr("transform", `translate(${width + 20}, 0)`);
+
+//                               const legendItems = legend.selectAll(".legend-item")
+//                                       .data(continents)
+//                                       .enter()
+//                                       .append("g")
+//                                       .attr("class", "legend-item")
+//                                       .attr("transform", (d, i) => `translate(0, ${i * 20})`)
+//                                       .on("mouseenter", function(event, d) {
+//                                             d3.selectAll(".continent-group").attr("opacity", 0.1);
+//                                             d3.select(`#group-${d[0].replace(/\s/g, '')}`).attr("opacity", 1);
+//                                       })
+//                                       .on("mouseleave", function() {
+//                                             d3.selectAll(".continent-group").attr("opacity", 1);
+//                                       });
+
+//             legendItems.append("rect")
+//                        .attr("x", 0)
+//                        .attr("y", 0)
+//                        .attr("width", 18)
+//                        .attr("height", 18)
+//                        .style("fill", d => continentColors(d[0]));
+
+//             legendItems.append("text")
+//                        .attr("x", 24)
+//                        .attr("y", 9)
+//                        .attr("dy", ".35em")
+//                        .style("text-anchor", "start")
+//                        .text(d => d[0])
+//                        .attr("class", "legend");
+//         }
+//   }, [])}
+
 const FinalChart1DataLoader = () => {
   useEffect(() => { 
-    const margin = {top: 40, right: 130, bottom: 60, left: 70},
-              width = 960 - margin.left - margin.right,
-              height = 600 - margin.top - margin.bottom;
+        // Set dimensions and margins
+        const margin = {top: 80, right: 160, bottom: 60, left: 70},
+        width = 960 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
 
-        const svg = d3.select("svg")
-                      .attr("width", width + margin.left + margin.right)
-                      .attr("height", height + margin.top + margin.bottom)
-                      .append("g")
-                      .attr("transform", `translate(${margin.left},${margin.top})`);
+    const svg = d3.select("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
 
-        const tooltip = d3.select("#tooltip");
+    const tooltip = d3.select("#tooltip");
 
-        let dataGlobal;
+    let dataGlobal;
 
-        // Load data
-        d3.csv("Pisa_Economy_Final.csv").then(data => {
-            // Parse data
-            data.forEach(d => {
-                d['Year'] = +d['Year'];
-                d['Country'] = d['Country'];
-                d['Country Name'] = d['Country Name'];
-                d['Continent'] = d['Continent']; // Assuming Continent is the field name
-                d.Performance = +d['Average Performance'];
-                d.Expenditure = +d['EDU Exp. Per Person Absolute'];
-                d.Population = +d['Population'];
+    // Load data
+    d3.csv("Pisa Economy Final.csv").then(data => {
+      // Parse data
+      data.forEach(d => {
+          d['Year'] = +d['Year'];
+          d['Country'] = d['Country'];
+          d['Country Name'] = d['Country Name'];
+          d['Continent'] = d['Continent']; 
+          d.Performance = +d['Average Performance'];
+          d.Expenditure = +d['EDU Exp. Per Person Absolute'];
+          d.Population = +d['Population'];
+      });
+
+      dataGlobal = data;
+
+      // Populate the dropdown with unique years, sorted from largest to smallest
+      const years = [...new Set(data.map(d => d.Year))].sort((a, b) => b - a);
+      const select = d3.select("#year-select");
+      select.selectAll("option")
+            .data(years)
+            .enter()
+            .append("option")
+            .attr("value", d => d)
+            .text(d => d);
+
+      // Initial display
+      update(data.filter(d => d.Year === years[0]));
+
+      // Event listener for dropdown
+      select.on("change", function() {
+          const selectedYear = +this.value;
+          update(data.filter(d => d.Year === selectedYear));
+      });
+    });
+
+    function update(filteredData) {
+      // Clear previous elements
+      svg.selectAll("*").remove();
+
+      // Add title
+      svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", -40)
+        .attr("text-anchor", "middle")
+        .style("font-size", "24px")
+        .style("font-weight", "bold")
+        .style("text-decoration", "underline")
+        .text("PISA Performance vs Education Expenditure");
+
+      // Set scales
+      const x = d3.scaleLinear()
+                  .domain([-200, d3.max(filteredData, d => d.Expenditure) + 200])
+                  .range([0, width]);
+
+      const y = d3.scaleLinear()
+                  .domain([0, d3.max(filteredData, d => d.Performance) + 100])
+                  .range([height, 0]);
+
+      const z = d3.scaleSqrt()
+                  .domain([0, d3.max(filteredData, d => d.Population)])
+                  .range([2, 30]);
+
+      // Define a color scale for continents
+      const continentColors = d3.scaleOrdinal(d3.schemeSet2);
+
+      // Define a color scale for countries within continents
+      const countryColors = {};
+      d3.groups(filteredData, d => d.Continent).forEach(group => {
+          countryColors[group[0]] = d3.scaleLinear()
+                                      .domain([0, group[1].length - 1])
+                                      .range([continentColors(group[0]), d3.color(continentColors(group[0])).darker(1)])
+                                      .interpolate(d3.interpolateLab);
+      });
+
+      const countryColorMap = {};
+      d3.groups(filteredData, d => d.Continent).forEach(group => {
+          group[1].forEach((d, i) => {
+              countryColorMap[d.Country] = countryColors[d.Continent](i / (group[1].length - 1));
+          });
+      });
+
+      // Add X axis
+      svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x))
+        .append("text")
+        .attr("class", "axis-title")
+        .attr("x", width / 2)
+        .attr("y", margin.bottom - 10)
+        .attr("fill", "black")
+        .style("text-anchor", "middle")
+        .text("Education Expenditure per Person in US Dollars");
+
+      // Add Y axis
+      svg.append("g")
+        .call(d3.axisLeft(y))
+        .append("text")
+        .attr("class", "axis-title")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -height / 2)
+        .attr("y", -margin.left + 20)
+        .attr("fill", "black")
+        .style("text-anchor", "middle")
+        .text("Average Pisa Scores");
+
+      // Add X grid lines
+      svg.append("g")
+        .attr("class", "grid")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x)
+                .tickSize(-height)
+                .tickFormat(""));
+
+      // Add Y grid lines
+      svg.append("g")
+        .attr("class", "grid")
+        .call(d3.axisLeft(y)
+                .tickSize(-width)
+                .tickFormat(""));
+
+      // Group data by continent
+      const continents = d3.group(filteredData, d => d.Continent);
+
+      // Add dots
+      const groups = svg.selectAll(".continent-group")
+                        .data(continents)
+                        .enter()
+                        .append("g")
+                        .attr("class", "continent-group")
+                        .attr("id", d => `group-${d[0].replace(/\s/g, '')}`);
+
+      groups.selectAll("circle")
+            .data(d => d[1])
+            .enter()
+            .append("circle")
+            .attr("cx", d => x(d.Expenditure))
+            .attr("cy", d => y(d.Performance))
+            .attr("r", d => z(d.Population))
+            .attr("fill", d => countryColorMap[d.Country])
+            .attr("stroke", "black")
+            .attr("stroke-width", 1)
+            .attr("opacity", 0.7)
+            .on("mouseenter", (event, d) => {
+                  tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                        
+                        tooltip.html(`Country: ${d['Country Name']}<br>
+                          Expenditure: ${d.Expenditure !== undefined && !isNaN(d.Expenditure) ? parseFloat(d.Expenditure).toFixed(2) : 'N/A'}<br>
+                          Performance: ${d.Performance !== undefined && !isNaN(d.Performance) ? parseFloat(d.Performance).toFixed(2) : 'N/A'}<br>
+                          Population: ${d.Population !== undefined && !isNaN(d.Population) ? (parseFloat(d.Population) / 1000000).toFixed(2) + 'M' : 'N/A'}`)
+                        .style("left", (d3.pointer(event, this)[0] + 5) + "px")
+                        .style("top", (d3.pointer(event, this)[1] - 28) + "px");
+
+                  d3.selectAll(".continent-group").attr("opacity", 0.1);
+                  d3.select(`#group-${d.Continent.replace(/\s/g, '')}`).attr("opacity", 1);
+            })
+            .on("mousemove", (event, d) => {
+
+                        
+                        tooltip.html(`Country: ${d['Country Name']}<br>
+                          Expenditure: ${d.Expenditure !== undefined && !isNaN(d.Expenditure) ? parseFloat(d.Expenditure).toFixed(2) : 'N/A'}<br>
+                          Performance: ${d.Performance !== undefined && !isNaN(d.Performance) ? parseFloat(d.Performance).toFixed(2) : 'N/A'}<br>
+                          Population: ${d.Population !== undefined && !isNaN(d.Population) ? (parseFloat(d.Population) / 1000000).toFixed(2) + 'M' : 'N/A'}`)
+                        .style("left", (d3.pointer(event, this)[0] + 5) + "px")
+                        .style("top", (d3.pointer(event, this)[1] - 28) + "px");
+
+                  d3.selectAll(".continent-group").attr("opacity", 0.1);
+                  d3.select(`#group-${d.Continent.replace(/\s/g, '')}`).attr("opacity", 1);
+            })
+            .on("mouseleave", d => {
+                  tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+
+                  d3.selectAll(".continent-group").attr("opacity", 1);
             });
 
-            dataGlobal = data;
+      // Add labels
+      groups.selectAll("text")
+            .data(d => d[1])
+            .enter()
+            .append("text")
+            .attr("x", d => x(d.Expenditure))
+            .attr("y", d => y(d.Performance))
+            .attr("dy", -4)
+            .attr("text-anchor", "middle")
+            .text(d => d.Country)
+            .attr("class", "label")
+            .style("fill", "grey");
 
-            // Populate the dropdown with unique years, sorted from largest to smallest
-            const years = [...new Set(data.map(d => d.Year))].sort((a, b) => b - a);
-            const select = d3.select("#year-select");
-            select.selectAll("option")
-                  .data(years)
-                  .enter()
-                  .append("option")
-                  .attr("value", d => d)
-                  .text(d => d);
+      // Add legend for continents
+      const legend = svg.append("g")
+                        .attr("transform", `translate(${width + 40}, 0)`);
 
-            // Initial display
-            update(data.filter(d => d.Year === years[0]));
+      const legendItems = legend.selectAll(".legend-item")
+                                .data(continents)
+                                .enter()
+                                .append("g")
+                                .attr("class", "legend-item")
+                                .attr("transform", (d, i) => `translate(0, ${i * 20})`)
+                                .on("mouseenter", function(event, d) {
+                                      d3.selectAll(".continent-group").attr("opacity", 0.1);
+                                      d3.select(`#group-${d[0].replace(/\s/g, '')}`).attr("opacity", 1);
+                                })
+                                .on("mouseleave", function() {
+                                      d3.selectAll(".continent-group").attr("opacity", 1);
+                                });
+    // Existing legend creation code
+    legendItems.append("rect")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", 18)
+    .attr("height", 18)
+    .style("fill", d => continentColors(d[0]));
 
-            // Event listener for dropdown
-            select.on("change", function() {
-                const selectedYear = +this.value;
-                update(data.filter(d => d.Year === selectedYear));
-            });
-        });
+    legendItems.append("text")
+    .attr("x", 24)
+    .attr("y", 9)
+    .attr("dy", ".35em")
+    .style("text-anchor", "start")
+    .text(d => d[0])
+    .attr("class", "legend");
 
-        function update(filteredData) {
-            // Normalize data
-            const maxExpenditure = d3.max(filteredData, d => d.Expenditure);
-            const maxPerformance = d3.max(filteredData, d => d.Performance);
+    // Adding grey circle for population to the legend
+    var legendPopulation = legend.append("g")
+                      .attr("transform", `translate(0, ${legendItems.size() * 20})`);
 
-            filteredData.forEach(d => {
-                d.normalizedExpenditure = d.Expenditure / maxExpenditure;
-                d.normalizedPerformance = d.Performance / maxPerformance;
-            });
+    legendPopulation.append("circle")
+          .attr("cx", 9)
+          .attr("cy", 40)
+          .attr("r", 9)
+          .style("fill", "grey");
 
-            // Clear previous elements
-            svg.selectAll("*").remove();
+    legendPopulation.append("text")
+          .attr("x", 24)
+          .attr("y", 40)  // Positioned slightly lower
+          .attr("dy", ".35em")
+          .style("text-anchor", "start")
+          .style("text-decoration", "underline")
+          .text("Population in M")
+          .attr("class", "legend");
 
-            // Set scales
-            const x = d3.scaleLinear()
-                        .domain([-0.05, 1.05]) // Adding padding to ensure bubbles are inside
-                        .range([0, width]);
+    // Adjusting filter container position
+    var legendHeight = legendItems.size() * 20 + 20; // Height of the legend box
+    var legendWidth = 300; // Assume a width for the legend box
 
-            const y = d3.scaleLinear()
-                        .domain([-0.05, 1.05]) // Adding padding to ensure bubbles are inside
-                        .range([height, 0]);
+    d3.select(".filter-container")
+    .style("position", "absolute")
+    .style("top", `${legendHeight}px`)
+    .style("left", `calc(50% - ${legendWidth / 2}px)`); // Center horizontally
 
-            const z = d3.scaleSqrt()
-                        .domain([0, d3.max(filteredData, d => d.Population)])
-                        .range([2, 30]);
 
-            // Define a color scale for continents
-            const continentColors = d3.scaleOrdinal(d3.schemeSet2);
-
-            // Define a color scale for countries within continents
-            const countryColors = {};
-            d3.groups(filteredData, d => d.Continent).forEach(group => {
-                countryColors[group[0]] = d3.scaleLinear()
-                                            .domain([0, group[1].length - 1])
-                                            .range([continentColors(group[0]), d3.color(continentColors(group[0])).darker(1)])
-                                            .interpolate(d3.interpolateLab);
-            });
-
-            const countryColorMap = {};
-            d3.groups(filteredData, d => d.Continent).forEach(group => {
-                group[1].forEach((d, i) => {
-                    countryColorMap[d.Country] = countryColors[d.Continent](i / (group[1].length - 1));
-                });
-            });
-
-            // Add X axis
-            svg.append("g")
-               .attr("transform", `translate(0,${height})`)
-               .call(d3.axisBottom(x))
-               .append("text")
-               .attr("class", "axis-title")
-               .attr("x", width / 2)
-               .attr("y", margin.bottom - 10)
-               .attr("fill", "black")
-               .style("text-anchor", "middle")
-               .text("Normalized Expenditure");
-
-            // Add Y axis
-            svg.append("g")
-               .call(d3.axisLeft(y))
-               .append("text")
-               .attr("class", "axis-title")
-               .attr("transform", "rotate(-90)")
-               .attr("x", -height / 2)
-               .attr("y", -margin.left + 20)
-               .attr("fill", "black")
-               .style("text-anchor", "middle")
-               .text("Normalized Performance");
-
-            // Add X grid lines
-            svg.append("g")
-               .attr("class", "grid")
-               .attr("transform", `translate(0,${height})`)
-               .call(d3.axisBottom(x)
-                       .tickSize(-height)
-                       .tickFormat(""));
-
-            // Add Y grid lines
-            svg.append("g")
-               .attr("class", "grid")
-               .call(d3.axisLeft(y)
-                       .tickSize(-width)
-                       .tickFormat(""));
-
-            // Group data by continent
-            const continents = d3.group(filteredData, d => d.Continent);
-
-            // Add dots
-            const groups = svg.selectAll(".continent-group")
-                              .data(continents)
-                              .enter()
-                              .append("g")
-                              .attr("class", "continent-group")
-                              .attr("id", d => `group-${d[0].replace(/\s/g, '')}`);
-
-            groups.selectAll("circle")
-                  .data(d => d[1])
-                  .enter()
-                  .append("circle")
-                  .attr("cx", d => x(d.normalizedExpenditure))
-                  .attr("cy", d => y(d.normalizedPerformance))
-                  .attr("r", d => z(d.Population))
-                  .attr("fill", d => countryColorMap[d.Country])
-                  .attr("stroke", "black")
-                  .attr("stroke-width", 1)
-                  .attr("opacity", 0.7)
-                  .on("mouseenter", (event, d) => {
-                        tooltip.transition()
-                               .duration(200)
-                               .style("opacity", .9);
-                        tooltip.html(`Country: ${d['Country Name']}<br>Expenditure: ${d.Expenditure}<br>Performance: ${d.Performance}<br>Population: ${d.Population}`)
-                               .style("left", (event.pageX + 5) + "px")
-                               .style("top", (event.pageY - 28) + "px");
-
-                        d3.selectAll(".continent-group").attr("opacity", 0.1);
-                        d3.select(`#group-${d.Continent.replace(/\s/g, '')}`).attr("opacity", 1);
-                  })
-                  .on("mouseleave", d => {
-                        tooltip.transition()
-                               .duration(500)
-                               .style("opacity", 0);
-
-                        d3.selectAll(".continent-group").attr("opacity", 1);
-                  });
-
-            // Add labels
-            groups.selectAll("text")
-                  .data(d => d[1])
-                  .enter()
-                  .append("text")
-                  .attr("x", d => x(d.normalizedExpenditure))
-                  .attr("y", d => y(d.normalizedPerformance))
-                  .attr("dy", -4)
-                  .attr("text-anchor", "middle")
-                  .text(d => d.Country)
-                  .attr("class", "label")
-                  .style("fill", d => countryColorMap[d.Country]);
-
-            // Add legend for continents
-            const legend = svg.append("g")
-                              .attr("transform", `translate(${width + 20}, 0)`);
-
-                              const legendItems = legend.selectAll(".legend-item")
-                                      .data(continents)
-                                      .enter()
-                                      .append("g")
-                                      .attr("class", "legend-item")
-                                      .attr("transform", (d, i) => `translate(0, ${i * 20})`)
-                                      .on("mouseenter", function(event, d) {
-                                            d3.selectAll(".continent-group").attr("opacity", 0.1);
-                                            d3.select(`#group-${d[0].replace(/\s/g, '')}`).attr("opacity", 1);
-                                      })
-                                      .on("mouseleave", function() {
-                                            d3.selectAll(".continent-group").attr("opacity", 1);
-                                      });
-
-            legendItems.append("rect")
-                       .attr("x", 0)
-                       .attr("y", 0)
-                       .attr("width", 18)
-                       .attr("height", 18)
-                       .style("fill", d => continentColors(d[0]));
-
-            legendItems.append("text")
-                       .attr("x", 24)
-                       .attr("y", 9)
-                       .attr("dy", ".35em")
-                       .style("text-anchor", "start")
-                       .text(d => d[0])
-                       .attr("class", "legend");
-        }
+    }
   }, [])}
+
 
 const FinalChart1 = () => {
   return (
-    <div>
-      <div className="filter-container">
-          <label for="year-select">Choose a year:</label>
-          <select id="year-select"></select>
-      </div>
+    <div className='bubles_div'>
       <div className="chart-container">
-          <svg width="960" height="600"></svg>
-      </div>
-      <div className="tooltip" id="tooltip"></div>
+        <svg width="960" height="600"></svg>
+        <div className="tooltip" id="tooltip"></div>
+    </div>
+    <div className="filter-container">
+        <label for="year-select">Choose a year:</label>
+        <select id="year-select"></select>
+    </div>
       {FinalChart1DataLoader()}
     </div>
   )
@@ -1414,7 +1804,7 @@ const FinalChart1 = () => {
 
 
 
-const TestChartDataLoader = () => {
+const DashboardOneDataLoader = () => {
   useEffect(() => {  
     d3.csv("Pisa Economy Final.csv").then(function(data) {
       // Convert data types
@@ -1839,7 +2229,7 @@ console.log("Error loading or processing data:", error);
 
   }, [])}
 
-const TestChart = () => {
+const DashboardOne = () => {
   return (
     <div> 
       <div className="container-fluid py-5">
@@ -1887,7 +2277,569 @@ const TestChart = () => {
       </div>
     </div>
   </div>
-      {TestChartDataLoader()}
+      {DashboardOneDataLoader()}
+    </div>
+  )
+}
+
+
+const DashboardTwoDataLoader = () => {
+  useEffect(() => {  
+    d3.csv("Pisa Economy Final.csv").then(function(data) {
+      // Convert data types
+      data.forEach(function(d) {
+  d['Normalized Reading'] = +d['Normalized Reading'];
+  d['Normalized Science'] = +d['Normalized Science'];
+  d['Average Performance'] = +d['Average Performance'];
+  d['Math'] = +d['Math'];
+  d['Normalized Math'] = +d['Normalized Math'];
+  d['Average Reading'] = +d['Average Reading'];
+  d['Average Science'] = +d['Average Science'];
+  d['Average Math'] = +d['Average Math'];
+  d['Reading'] = +d['Reading'];
+  d['Science'] = +d['Science'];
+  d['Year'] = +d['Year'];
+  d['Population'] = +d['Population'];
+  d['Country'] = d['Country']; 
+  d['Country Name'] = d['Country Name'];  
+  d['School Ownership'] = +d['School Ownership'];
+  d['School Size'] = +d['School Size'];
+  d['Proportion of all teachers fully certified'] = +d['proportion of all teachers fully certified'];
+  d['Student-Teacher ratio'] = +d['Student-Teacher ratio'];
+  d['Available computers per student'] = +d['Available computers per student'];
+  d['Staff Shortage'] = +d['Shortage of educational staff'];
+  d['Material Shortage'] = +d['Shortage of educational material'];
+  d['Student behavior'] = +d['Student behavior hindering learning'];
+  d['Teacher behavior'] = +d['Teacher behavior hindering learning'];
+  d['Class Size'] = +d['Class Size'];
+  d['Creative extra-curricular activities'] = +d['Creative extra-curricular activities'];
+  d['EDU Exp. Per Person Absolute'] = +d['EDU Exp. Per Person Absolute'];
+  d['ROUND GDP'] = +d['ROUND GDP'];
+  d['GDP/POPULATION'] = +d['GDP/POPULATION'];
+  d['Public Percentage'] = +d['Public Percentage'];
+  d['Private Government-dependent Percentage'] = +d['Private Government-dependent Percentage'];
+  d['Private Independent Percentage'] = +d['Private Independent Percentage'];
+});
+
+      var countries = Array.from(new Set(data.map(d => d.Country)));
+
+      // Populate country selectors
+      var countrySelector = d3.select("#countrySelector");
+      
+      countrySelector.selectAll("option")
+        .data(countries)
+        .enter().append("option")
+        .text(d => d)
+        .attr("value", d => d);
+
+      // Initial chart rendering with preselected year
+      updateChart2(countries[0]);
+      updateChart3(countries[0]);
+      var selectedCountryName = countries[0];
+      d3.select("#chart2-title").text("Pisa Scores per Year for Albania");
+     d3.select("#chart3-title").text("Student & Teacher Behavior, Staff & Material Shortages for Albania");
+
+      countrySelector.on("change", function() {
+        var selectedCountry = d3.select(this).property("value");
+        updateChart2(selectedCountry);
+        updateChart3(selectedCountry);
+        var selectedCountryName = data.find(d => d.Country === selectedCountry)['Country Name'];
+        d3.select("#chart2-title").text("Pisa Scores per Year for " + selectedCountryName);
+        d3.select("#chart3-title").text("Student & Teacher Behavior, Staff & Material Shortages for " + selectedCountryName);
+      });
+
+
+      function updateChart2(selectedCountry) {
+    var filteredData = data.filter(d => d.Country == selectedCountry);
+    filteredData.sort((a, b) => a.Year - b.Year);
+
+    var margin = {top: 5, right: 30, bottom: 30, left: 50};
+    var container = d3.select("#chart2").node();
+    var width = container.getBoundingClientRect().width - margin.left - margin.right;
+    var height = container.getBoundingClientRect().height - margin.top - margin.bottom;
+
+    d3.select("#chart2").selectAll("*").remove();
+
+    var svg2 = d3.select("#chart2").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var x2 = d3.scaleLinear().range([0, width]);
+    var y2 = d3.scaleLinear().range([height, 0]);
+    
+
+    x2.domain([d3.min(filteredData, function(d) { return d.Year; }) - 0.5, d3.max(filteredData, function(d) { return d.Year; }) + 0.5]);
+    y2.domain([0, 1]);
+
+    svg2.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x2).tickFormat(d3.format("d")))
+        .selectAll("text")
+          .attr("dx", "-.8em")
+          .attr("dy", ".15em")
+          .attr("transform", "rotate(-45)")
+          .style("text-anchor", "end");
+
+    svg2.append("g")
+        .call(d3.axisLeft(y2));
+
+        // Add X axis label
+        //svg2.append("text")
+        //.attr("class", "x-axis-label")
+        //.attr("x", width / 2)
+        //.attr("y", height + margin.bottom + 5)
+        //.attr("text-anchor", "middle")
+        //.style("font-size", "12px")
+        //.text("Year");
+
+    // Add Y axis label
+    svg2.append("text")
+        .attr("class", "y-axis-label")
+        .attr("x", -height / 2)
+        .attr("y", -margin.left + 15)
+        .attr("text-anchor", "middle")
+        .attr("transform", "rotate(-90)")
+        .style("font-size", "14px")
+        .text("Normalized Pisa Scores");
+
+    var line = d3.line()
+        .x(function(d) { return x2(d.Year); })
+        .y(function(d) { return y2(d.value); });
+
+    var subjects = ['Normalized Math', 'Normalized Reading', 'Normalized Science'];
+    var averages = ['Average Math', 'Average Reading', 'Average Science'];
+    var colors = d3.schemeCategory10;
+
+    var highlightYears = [2006, 2009, 2012, 2015, 2018, 2022];
+
+    subjects.forEach(function(subject, index) {
+        var lineData = filteredData.map(function(d) {
+            return {Year: d.Year, value: d[subject]};
+        });
+
+        svg2.append("path")
+            .datum(lineData)
+            .attr("class", "line")
+            .attr("fill", "none")
+            .attr("stroke", colors[index])
+            .attr("stroke-width", 5)
+            .attr("d", line)
+            .on("mouseover", function(event, d) {
+                d3.selectAll(".line").style("opacity", 0.1);
+                d3.selectAll(".dotted-line").style("opacity", 0.1);
+                d3.select(this).style("opacity", 1);
+                d3.selectAll("circle").style("opacity", 0.1);
+                d3.selectAll("circle." + subject.replace(/\s+/g, '')).style("opacity", 1);
+
+                svg2.selectAll(".data-label").remove();
+                svg2.selectAll("circle." + subject.replace(/\s+/g, ''))
+                    .each(function(d) {
+                        svg2.append("text")
+                            .attr("class", "data-label")
+                            .attr("x", x2(d.Year))
+                            .attr("y", y2(d.value) - 10)
+                            .attr("text-anchor", "middle")
+                            .attr("font-size", "10px")
+                            .text(d.value.toFixed(3));
+                    });
+            })
+            .on("mouseout", function() {
+                d3.selectAll(".line").style("opacity", 1);
+                d3.selectAll("circle").style("opacity", 1);
+                d3.selectAll(".dotted-line").style("opacity", 1);
+                svg2.selectAll(".data-label").remove();
+            });
+
+        svg2.selectAll("circle" + subject.replace(/\s+/g, ''))
+            .data(lineData)
+            .enter().append("circle")
+            .attr("class", "circle " + subject.replace(/\s+/g, ''))
+            .attr("r", 5)
+            .attr("cx", function(d) { return x2(d.Year); })
+            .attr("cy", function(d) { return y2(d.value); })
+            .attr("fill", colors[index])
+            .style("opacity", function(d) {
+                return highlightYears.includes(d.Year) ? 1 : 0;
+            })
+            .on("mouseover", function(event, d) {
+                d3.selectAll(".line").style("opacity", 0.1);
+                d3.selectAll(".dotted-line").style("opacity", 0.1);
+                d3.select(this).style("opacity", 1);
+                d3.selectAll("circle").style("opacity", 0.1);
+                d3.selectAll("circle." + subject.replace(/\s+/g, '')).style("opacity", 1);
+
+                svg2.selectAll(".data-label").remove();
+                svg2.selectAll("circle." + subject.replace(/\s+/g, ''))
+                    .each(function(d) {
+                        svg2.append("text")
+                            .attr("class", "data-label")
+                            .attr("x", x2(d.Year))
+                            .attr("y", y2(d.value) - 10)
+                            .attr("text-anchor", "middle")
+                            .attr("font-size", "10px")
+                            .text(d.value.toFixed(3));
+                    });
+            })
+            .on("mouseout", function() {
+                d3.selectAll(".line").style("opacity", 1);
+                d3.selectAll("circle").style("opacity", 1);
+                d3.selectAll(".dotted-line").style("opacity", 1);
+                svg2.selectAll(".data-label").remove();
+            });
+    });
+
+    averages.forEach(function(average, index) {
+        var lineData = filteredData.map(function(d) {
+            return {Year: d.Year, value: d[average]};
+        });
+
+        svg2.append("path")
+            .datum(lineData)
+            .attr("class", "dotted-line")
+            .attr("fill", "none")
+            .attr("stroke", colors[index])
+            .attr("stroke-width", 3)
+            .attr("stroke-dasharray", "5,5")
+            .attr("d", line)
+            .on("mouseover", function(event, d) {
+                d3.selectAll(".dotted-line").style("opacity", 0.1);
+                d3.select(this).style("opacity", 1);
+                d3.selectAll("circle").style("opacity", 0.1);
+                d3.selectAll("circle." + average.replace(/\s+/g, '')).style("opacity", 1);
+
+                svg2.selectAll(".data-label").remove();
+                svg2.selectAll("circle." + average.replace(/\s+/g, ''))
+                    .each(function(d) {
+                        svg2.append("text")
+                            .attr("class", "data-label")
+                            .attr("x", x2(d.Year))
+                            .attr("y", y2(d.value) - 10)
+                            .attr("text-anchor", "middle")
+                            .attr("font-size", "10px")
+                            .text(d.value.toFixed(3));
+                    });
+            })
+            .on("mouseout", function() {
+                d3.selectAll(".dotted-line").style("opacity", 1);
+                d3.selectAll("circle").style("opacity", 1);
+                svg2.selectAll(".data-label").remove();
+            });
+
+        svg2.selectAll("circle" + average.replace(/\s+/g, ''))
+            .data(lineData)
+            .enter().append("circle")
+            .attr("class", "circle " + average.replace(/\s+/g, ''))
+            .attr("r", 5)
+            .attr("cx", function(d) { return x2(d.Year); })
+            .attr("cy", function(d) { return y2(d.value); })
+            .attr("fill", colors[index])
+            .style("opacity", function(d) {
+                return highlightYears.includes(d.Year) ? 1 : 0;
+            })
+            .on("mouseover", function(event, d) {
+                d3.selectAll(".dotted-line").style("opacity", 0.1);
+                d3.select(this).style("opacity", 1);
+                d3.selectAll("circle").style("opacity", 0.1);
+                d3.selectAll("circle." + average.replace(/\s+/g, '')).style("opacity", 1);
+
+                svg2.selectAll(".data-label").remove();
+                svg2.selectAll("circle." + average.replace(/\s+/g, ''))
+                    .each(function(d) {
+                        svg2.append("text")
+                            .attr("class", "data-label")
+                            .attr("x", x2(d.Year))
+                            .attr("y", y2(d.value) - 10)
+                            .attr("text-anchor", "middle")
+                            .attr("font-size", "10px")
+                            .text(d.value.toFixed(3));
+                    });
+            })
+            .on("mouseout", function() {
+                d3.selectAll(".dotted-line").style("opacity", 1);
+                d3.selectAll("circle").style("opacity", 1);
+                svg2.selectAll(".data-label").remove();
+            });
+    });
+
+    var legend = svg2.selectAll(".legend")
+        .data(subjects)
+        .enter().append("g")
+          .attr("class", "legend")
+          .attr("transform", function(d, i) { return "translate(0," + (i * 20) + ")"; });
+
+    legend.append("line")
+        .attr("x1", width - 80)
+        .attr("x2", width - 40)
+        .attr("y1", 0)
+        .attr("y2", 0)
+        .attr("stroke", function(d, i) { return colors[i]; })
+        .attr("stroke-width", 3)
+        .attr("stroke-dasharray", "none");
+
+    legend.append("text")
+        .attr("x", width - 85)
+        .attr("y", 0)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .style("font-size", "10px")
+        .text(function(d) { return d; });
+
+    var legendAvg = svg2.append("g")
+          .attr("class", "legend")
+          .attr("transform", "translate(0, 60)");
+
+    var dashLength = 10;
+    var numDashes = 3;
+    var dashSpacing = 5;
+
+    for (var i = 0; i < numDashes; i++) {
+        legendAvg.append("line")
+            .attr("x1", width - 80 + i * (dashLength + dashSpacing))
+            .attr("x2", width - 70 + i * (dashLength + dashSpacing))
+            .attr("y1", 0)
+            .attr("y2", 0)
+            .attr("stroke", colors[i])
+            .attr("stroke-width", 3)
+            .attr("stroke-dasharray", "none");
+    }
+
+    legendAvg.append("text")
+        .attr("x", width - 85)
+        .attr("y", 0)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .style("font-size", "10px")
+        .text("All Countries Average Values");
+}
+
+
+
+
+function updateChart3(selectedCountry) {
+  // Clear the existing chart
+  d3.select("#chart3").selectAll("*").remove();
+
+  // Filter data for the selected country
+  var countryData = data.filter(d => d.Country === selectedCountry);
+
+  // Set dimensions and margins for the chart
+  var margin = { top: 20, right: 30, bottom: 50, left: 60 };
+  var container = d3.select("#chart3").node();
+  var width = container.getBoundingClientRect().width - margin.left - margin.right;
+  var height = container.getBoundingClientRect().height - margin.top - margin.bottom;
+
+  // Append the SVG object to the chart container
+  var svg = d3.select("#chart3")
+              .append("svg")
+              .attr("width", width + margin.left + margin.right)
+              .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // Define x and y scales
+  var x = d3.scaleLinear()
+            .domain([d3.min(countryData, d => d.Year), d3.max(countryData, d => d.Year) + 0.5])
+            .range([0, width]);
+
+  var y = d3.scaleLinear()
+            .domain([-1, 1])
+            .range([height, 0]);
+
+  // Define the areas with rounded lines
+  var area = d3.area()
+               .curve(d3.curveBasis) // Apply rounding to the lines
+               .x(d => x(d.Year))
+               .y0(y(0))
+               .y1(d => y(d.value));
+
+  var keys = ['Student behavior', 'Teacher behavior', 'Staff Shortage', 'Material Shortage'];
+  var colors = ['steelblue', 'orange', 'green', 'red'];
+
+  // Tooltip setup
+  var tooltip = d3.select("#chart3")
+                  .append("div")
+                  .attr("class", "tooltip")
+                  .style("opacity", 0)
+                  .style("position", "absolute")
+                  .style("background-color", "white")
+                  .style("border", "solid")
+                  .style("border-width", "1px")
+                  .style("border-radius", "5px")
+                  .style("padding", "10px");
+
+  // Precompute tooltip data for each range
+  var tooltipDataMap = new Map();
+  tooltipDataMap.set('2006-2008', countryData.find(d => d.Year === 2006));
+  tooltipDataMap.set('2009-2011', countryData.find(d => d.Year === 2009));
+  tooltipDataMap.set('2012-2014', countryData.find(d => d.Year === 2012));
+  tooltipDataMap.set('2015-2017', countryData.find(d => d.Year === 2015));
+  tooltipDataMap.set('2018-2020', countryData.find(d => d.Year === 2018));
+  tooltipDataMap.set('2021-2022', countryData.find(d => d.Year === 2022));
+
+  function getTooltipData(year) {
+    if (year >= 2006 && year <= 2008) {
+      return tooltipDataMap.get('2006-2008');
+    } else if (year >= 2009 && year <= 2011) {
+      return tooltipDataMap.get('2009-2011');
+    } else if (year >= 2012 && year <= 2014) {
+      return tooltipDataMap.get('2012-2014');
+    } else if (year >= 2015 && year <= 2017) {
+      return tooltipDataMap.get('2015-2017');
+    } else if (year >= 2018 && year <= 2020) {
+      return tooltipDataMap.get('2018-2020');
+    } else if (year >= 2021 && year <= 2022) {
+      return tooltipDataMap.get('2021-2022');
+    }
+    return null;
+  }
+
+  keys.forEach((key, index) => {
+    var areaData = countryData.map(d => ({
+      Year: d.Year,
+      value: d[key]
+    }));
+
+    svg.append("path")
+       .datum(areaData)
+       .attr("fill", colors[index])
+       .attr("opacity", 0.5)
+       .attr("d", area)
+       .on("mouseover", function(event) {
+         var year = Math.round(x.invert(d3.pointer(event)[0]));
+         var tooltipData = getTooltipData(year);
+         console.log('Mouseover year:', year, 'Tooltip data:', tooltipData);
+
+         if (tooltipData) {
+           tooltip.transition()
+                  .duration(200)
+                  .style("opacity", 0.9);
+         }
+       })
+       .on("mousemove", function(event) {
+         var year = Math.round(x.invert(d3.pointer(event)[0]));
+         var tooltipData = getTooltipData(year);
+         console.log('Mousemove year:', year, 'Tooltip data:', tooltipData);
+
+         if (tooltipData) {
+           var studentBehavior = parseFloat(tooltipData['Student behavior hindering learning']);
+           var teacherBehavior = parseFloat(tooltipData['Teacher behavior hindering learning']);
+           var staffShortage = parseFloat(tooltipData['Shortage of educational staff']);
+           var materialShortage = parseFloat(tooltipData['Shortage of educational material']);
+
+           tooltip.html(`Year: ${tooltipData.Year}<br/>
+                         Student behavior: ${studentBehavior.toFixed(2)}<br/>
+                         Teacher behavior: ${teacherBehavior.toFixed(2)}<br/>
+                         Staff Shortage: ${staffShortage.toFixed(2)}<br/>
+                         Material Shortage: ${materialShortage.toFixed(2)}`)
+                  .style("left", ((d3.pointer(event, this)[0]) + 5) + "px")
+                  .style("top", ((d3.pointer(event, this)[1]) - 28) + "px");
+         }
+       })
+       .on("mouseout", function() {
+         tooltip.transition()
+                .duration(500)
+                .style("opacity", 0);
+       });
+
+  });
+
+  // Add the X Axis
+  svg.append("g")
+     .attr("transform", "translate(0," + height + ")")
+     .call(d3.axisBottom(x).tickFormat(d3.format("d")))
+     .selectAll("text")
+     .attr("dx", "-.8em")
+     .attr("dy", ".15em")
+     .attr("transform", "rotate(-45)")
+     .style("text-anchor", "end");
+
+  // Add the Y Axis
+  svg.append("g")
+     .call(d3.axisLeft(y));
+
+  // Add labels
+  svg.append("text")
+     .attr("text-anchor", "middle")
+     .attr("x", width / 2 -20)
+     .attr("y", height + margin.bottom / 2 + 25)
+     .text("Year");
+     
+
+  svg.append("text")
+     .attr("text-anchor", "middle")
+     .attr("transform", "rotate(-90)")
+     .attr("x", -height / 2)
+     .attr("y", -margin.left + 15)
+     .text("Behaviors and Shortages");
+
+     var legend = svg.append("g")
+                  .attr("transform", `translate(${width - 300}, 0)`);
+
+  keys.forEach((key, index) => {
+    var row = Math.floor(index / 2);
+    var col = index % 2;
+
+    legend.append("rect")
+          .attr("x", col * 150)
+          .attr("y", row * 20)
+          .attr("width", 10)
+          .attr("height", 10)
+          .attr("fill", colors[index])
+          .attr("opacity", 0.5);
+
+    legend.append("text")
+          .attr("x", col * 150 + 20)
+          .attr("y", row * 20 + 10)
+          .text(key);
+  });
+}
+
+
+
+
+
+
+}).catch(function(error){
+console.log("Error loading or processing data:", error);
+});
+
+  }, [])}
+
+const DashboardTwo = () => {
+  return (
+    <div> 
+      <div className="container-fluid py-5">
+    <div className="row justify-content-center">
+      <div className="col-lg-9 col-12">
+        <div className="border p-3 mb-4">
+          <div className="row justify-content-center">
+            <div className="col-12 mb-3">
+              <div className="card">
+                <div className="card-header"><h2 className="text-center" id="chart2-title">Results per Year</h2></div>
+                <select id="countrySelector" className="selector form-control mb-3"></select>
+                <div className="card-body">
+                  <div id="chart2" className="chart-new"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-12 mb-3">
+              <div className="card">
+                <div className="card-header"><h2 className="text-center" id="chart3-title">Country Education Overview</h2></div>
+                <div className="card-body">
+                  <div id="chart3" className="chart-new"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      {DashboardTwoDataLoader()}
     </div>
   )
 }
