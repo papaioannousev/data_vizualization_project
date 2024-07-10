@@ -1699,11 +1699,10 @@ function updateChart4(selectedCountry, selectedYear) {
 function updateChart5(selectedCountry, selectedYear) {
   var filteredData = data.filter(d => d.Country == selectedCountry);
 
-  var margin = {top: 20, right: 30, bottom: 40, left: 50};
-  var container = d3.select("#chart5").node();
-  var width = container.getBoundingClientRect().width - margin.left - margin.right;
-  var height = container.getBoundingClientRect().height - margin.top - margin.bottom;
-      radius = Math.min(width, height) / 2;
+  var margin = {top: 50, right: 130, bottom: 50, left: 100},
+        width = 450 - margin.left - margin.right,
+        height = 250 - margin.top - margin.bottom,
+        radius = Math.min(width, height) / 2;
 
   d3.select("#chart5").selectAll("*").remove();
 
