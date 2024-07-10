@@ -292,6 +292,11 @@ function Acknowledgements() {
       <p className='credits_p'>
         OECD: https://www.oecd.org/en/data.html
       </p>
+      <p className='credits_p'>
+        Our World in Data: https://ourworldindata.org/
+      </p><p className='credits_p'>
+        World Bank Group: https://data.worldbank.org/
+      </p>
     </body>
   )
 }
