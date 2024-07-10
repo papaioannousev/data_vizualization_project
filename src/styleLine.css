@@ -1,0 +1,54 @@
+/* Reset and basic styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: black; /* Changed color to black for better readability */
+}
+
+#chart {
+  width: 100%;
+  max-width: 960px;
+  height: 400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgb(48, 0, 255);
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+#chart-container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: rgb(250, 244, 218);
+}
+
+/* Additional styles for buttons */
+#buttons {
+  margin-top: 20px;
+}
+
+#buttons button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+#buttons button:hover {
+  background-color: #45a049;
+}

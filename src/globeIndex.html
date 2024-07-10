@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Map Visualization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>World Map Visualization</h1>
+    <div id="map-container">
+        <div id="map"></div>
+        <div id="legend"></div>
+    </div>
+    <div id="tooltip"></div>
+    <div id="year-selector">
+        <label for="year-select">Select Year:</label>
+        <select id="year-select"></select>
+        <button id="play-stop-button">Play / Stop</button>
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <script src="globe3.js"></script>
+</body>
+</html>

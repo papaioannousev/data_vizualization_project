@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Custom D3 Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .chart_3 {
+      width: 100%;
+      height: 400px;
+    }
+    .axis text {
+      font-size: 12px;
+    }
+    .selector {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Bar Chart: Average Performance by Country</div>
+          <div class="card-body">
+            <select id="yearSelector1" class="selector form-control"></select>
+            <div id="chart1" class="chart_3"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Line Chart: Trends over Subjects</div>
+          <div class="card-body">
+            <select id="yearSelector2" class="selector form-control"></select>
+            <div id="chart2" class="chart_3"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Pie Chart: Distribution of Performance</div>
+          <div class="card-body">
+            <select id="countrySelector1" class="selector form-control"></select>
+            <div id="chart3" class="chart_3"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Scatter Plot: Shortage of Material vs. Staff</div>
+          <div class="card-body">
+            <select id="countrySelector2" class="selector form-control"></select>
+            <div id="chart4" class="chart_3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      d3.csv("Pisa_D3_Norm.csv").then(function(data) {
+        // Convert data types
+        data.forEach(function(d) {
+          d['Year'] = +d['Year'];
+          d['Average Performance'] = +d['Average Performance'];
+          d['Math'] = +d['Math'];
+          d['Reading'] = +d['Reading'];
+          d['Science'] = +d['Science'];
+          d['Shortage of educational staff'] = +d['Shortage of educational staff'];
+          d['Shortage of educational material'] = +d['Shortage of educational material'];
+        });
+
+        // Get unique years and countries for the selectors
+        var years = Array.from(new Set(data.map(d => d.Year)));
+        var countries = Array.from(new Set(data.map(d => d.Country)));
+
+        // Populate year selectors
+        var yearSelector1 = d3.select("#yearSelector1");
+        var yearSelector2 = d3.select("#yearSelector2");
+        yearSelector1.selectAll("option")
+          .data(years)
+          .enter().append("option")
+          .text(d => d)
+          .attr("value", d => d);
+        yearSelector2.selectAll("option")
+          .data(years)
+          .enter().append("option")
+          .text(d => d)
+          .attr("value", d => d);
+
+        // Populate country selectors
+        var countrySelector1 = d3.select("#countrySelector1");
+        var countrySelector2 = d3.select("#countrySelector2");
+        countrySelector1.selectAll("option")
+          .data(countries)
+          .enter().append("option")
+          .text(d => d)
+          .attr("value", d => d);
+        countrySelector2.selectAll("option")
+          .data(countries)
+          .enter().append("option")
+          .text(d => d)
+          .attr("value", d => d);
+
+        // Initial chart rendering
+        updateChart1(years[0]);
+        updateChart2(years[0]);
+        updateChart3(countries[0]);
+        updateChart4(countries[0]);
+
+        // Add event listeners for the selectors
+        yearSelector1.on("change", function() {
+          var selectedYear = d3.select(this).property("value");
+          updateChart1(selectedYear);
+        });
+        yearSelector2.on("change", function() {
+          var selectedYear = d3.select(this).property("value");
+          updateChart2(selectedYear);
+        });
+        countrySelector1.on("change", function() {
+          var selectedCountry = d3.select(this).property("value");
+          updateChart3(selectedCountry);
+        });
+        countrySelector2.on("change", function() {
+          var selectedCountry = d3.select(this).property("value");
+          updateChart4(selectedCountry);
+        });
+
+        // Function to update Bar Chart
+      function updateChart1(selectedYear) {
+    var filteredData = data.filter(d => d.Year == selectedYear);
+
+    var margin = {top: 20, right: 30, bottom: 40, left: 50},
+        width = 450 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+
+    d3.select("#chart1").selectAll("*").remove();
+
+    var svg1 = d3.select("#chart1").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var x1 = d3.scaleBand().range([0, width]).padding(0.2),
+        y1 = d3.scaleLinear().range([height, 0]);
+
+    x1.domain(filteredData.map(function(d) { return d.Country; }));
+    y1.domain([0, d3.max(filteredData, function(d) { return d['Average Performance']; })]);
+
+    // Add horizontal grid lines
+    svg1.append("g")
+      .attr("class", "grid")
+      .call(d3.axisLeft(y1).tickSize(-width).tickFormat(""));
+
+    svg1.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x1))
+        .selectAll("text")
+          .attr("dx", "-.8em")
+          .attr("dy", ".15em")
+          .attr("transform", "rotate(-90)")
+          .style("text-anchor", "end");
+
+    svg1.append("g")
+        .call(d3.axisLeft(y1));
+
+    // Use pale colors for the bars
+    var colorScale = d3.scaleOrdinal()
+                       .range(d3.schemePastel1);
+
+    svg1.selectAll(".bar")
+      .data(filteredData)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x1(d.Country); })
+        .attr("width", x1.bandwidth())
+        .attr("y", function(d) { return y1(d['Average Performance']); })
+        .attr("height", function(d) { return height - y1(d['Average Performance']); })
+        .attr("rx", 5) // Rounded corners
+        .attr("ry", 5) // Rounded corners
+        .style("fill", function(d, i) { return colorScale(i); });
+  }
+
+  // Function to update Line Chart
+  function updateChart2(selectedYear) {
+    var filteredData = data.filter(d => d.Year == selectedYear);
+
+    var margin = {top: 20, right: 30, bottom: 40, left: 50},
+        width = 450 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+
+    d3.select("#chart2").selectAll("*").remove();
+
+    var svg2 = d3.select("#chart2").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var x2 = d3.scaleBand().range([0, width]).padding(0.1),
+        y2 = d3.scaleLinear().range([height, 0]);
+
+    x2.domain(filteredData.map(function(d) { return d.Country; }));
+    y2.domain([0, d3.max(filteredData, function(d) { return Math.max(d['Normalized Math'], d['Normalized Reading'], d['Normalized Science']); })]);
+
+    svg2.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x2))
+        .selectAll("text")
+          .attr("dx", "-.8em")
+          .attr("dy", ".15em")
+          .attr("transform", "rotate(-65)")
+          .style("text-anchor", "end");
+
+    svg2.append("g")
+        .call(d3.axisLeft(y2));
+
+    var line = d3.line()
+        .x(function(d) { return x2(d.Country) + x2.bandwidth() / 2; })
+        .y(function(d) { return y2(d.value); });
+
+    var subjects = ['Normalized Math', 'Normalized Reading', 'Normalized Science'];
+    var colors = d3.schemeCategory10;
+
+    subjects.forEach(function(subject, index) {
+      var lineData = filteredData.map(function(d) {
+        return {Country: d.Country, value: d[subject]};
+      });
+
+      svg2.append("path")
+          .datum(lineData)
+          .attr("fill", "none")
+          .attr("stroke", colors[index])
+          .attr("stroke-width", 1.5)
+          .attr("d", line);
+
+      svg2.selectAll("dot")
+        .data(lineData)
+        .enter().append("circle")
+          .attr("r", 3)
+          .attr("cx", function(d) { return x2(d.Country) + x2.bandwidth() / 2; })
+          .attr("cy", function(d) { return y2(d.value); })
+          .attr("fill", colors[index]);
+    });
+
+    // Add legend
+    var legend = svg2.selectAll(".legend")
+      .data(subjects)
+      .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+    legend.append("rect")
+      .attr("x", width - 10)
+      .attr("width", 10)
+      .attr("height", 10)
+      .style("fill", function(d, i) { return colors[i]; });
+
+    legend.append("text")
+      .attr("x", width - 15)
+      .attr("y", 5)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .style("font-size", "10px")
+      .text(function(d) { return d; });
+  }
+
+        // Function to update Pie Chart
+        function updateChart3(selectedCountry) {
+          var filteredData = data.filter(d => d.Country == selectedCountry);
+
+          var margin = {top: 20, right: 30, bottom: 40, left: 50},
+              width = 450 - margin.left - margin.right,
+              height = 400 - margin.top - margin.bottom;
+
+          d3.select("#chart3").selectAll("*").remove();
+
+          var svg3 = d3.select("#chart3").append("svg")
+              .attr("width", width + margin.left + margin.right)
+              .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+              .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");
+
+          var radius = Math.min(width, height) / 2;
+          var pie = d3.pie()
+              .value(function(d) { return d.value; })
+              .sort(null);
+
+          var arc = d3.arc()
+              .outerRadius(radius - 10)
+              .innerRadius(0);
+
+          var pieData = [
+            {label: "Math", value: d3.sum(filteredData, function(d) { return d.Math; })},
+            {label: "Reading", value: d3.sum(filteredData, function(d) { return d.Reading; })},
+            {label: "Science", value: d3.sum(filteredData, function(d) { return d.Science; })}
+          ];
+
+          var g = svg3.selectAll(".arc")
+            .data(pie(pieData))
+            .enter().append("g")
+              .attr("class", "arc");
+
+          g.append("path")
+            .attr("d", arc)
+            .style("fill", function(d) { return d3.schemeCategory10[d.index]; });
+
+          g.append("text")
+            .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+            .attr("dy", ".35em")
+            .text(function(d) { return d.data.label; });
+        }
+
+// Function to update Scatter Plot
+function updateChart4(selectedCountry) {
+  var filteredData = data.filter(d => d.Country == selectedCountry);
+
+  var margin = {top: 20, right: 100, bottom: 40, left: 50},
+      width = 450 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
+
+  d3.select("#chart4").selectAll("*").remove();
+
+  var svg4 = d3.select("#chart4").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var x4 = d3.scaleLinear().range([0, width]),
+      y4 = d3.scaleLinear().range([height, 0]);
+
+  x4.domain([-2, 2]);
+  y4.domain([-2, 2]);
+
+  var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+  // Add x-axis
+  svg4.append("g")
+      .attr("transform", "translate(0," + y4(0) + ")")
+      .call(d3.axisBottom(x4))
+    .append("text")
+      .attr("x", width)
+      .attr("y", -10)
+      .attr("fill", "#000")
+      .style("text-anchor", "end")
+      .text("Shortage of educational material");
+
+  // Add y-axis
+  svg4.append("g")
+      .attr("transform", "translate(" + x4(0) + ",0)")
+      .call(d3.axisLeft(y4))
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 10)
+      .attr("dy", "-5.1em")
+      .attr("fill", "#000")
+      .style("text-anchor", "end")
+      .text("Shortage of educational staff");
+
+  // Add points
+  svg4.selectAll("circle")
+    .data(filteredData)
+    .enter().append("circle")
+      .attr("cx", function(d) { return x4(d['Shortage of educational material']); })
+      .attr("cy", function(d) { return y4(d['Shortage of educational staff']); })
+      .attr("r", 5)
+      .style("fill", function(d) { return color(d.Year); });
+
+  // Add legend
+  var legend = svg4.selectAll(".legend")
+      .data(color.domain())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+      .attr("x", width + 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend.append("text")
+      .attr("x", width + 44)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "start")
+      .text(function(d) { return d; });
+
+  // Add zero lines
+  svg4.append("line")
+      .attr("x1", x4(-2))
+      .attr("x2", x4(2))
+      .attr("y1", y4(0))
+      .attr("y2", y4(0))
+      .attr("stroke", "black")
+      .attr("stroke-width", 1)
+      .attr("stroke-dasharray", "4,4");
+
+  svg4.append("line")
+      .attr("x1", x4(0))
+      .attr("x2", x4(0))
+      .attr("y1", y4(-2))
+      .attr("y2", y4(2))
+      .attr("stroke", "black")
+      .attr("stroke-width", 1)
+      .attr("stroke-dasharray", "4,4");
+}
+
+
+
+      }).catch(function(error){
+        console.log("Error loading or processing data:", error);
+      });
+    });
+  </script>
+</body>
+</html>
